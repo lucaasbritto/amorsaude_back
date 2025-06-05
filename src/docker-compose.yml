@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8081:80"
+    volumes:
+      - ./:/var/www/html
+      - ./logs/apache:/var/log/apache2
+    networks:
+      - laravel
+
+  composer:
+    image: composer:1
+    volumes:
+      - ./:/app
+    working_dir: /app
+    entrypoint: ["composer"]
+
+networks:
+  laravel:
