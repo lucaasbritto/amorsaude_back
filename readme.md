@@ -58,15 +58,16 @@ POST /api/login
 }
 
 ## 📬 Endpoints principais
-Método	   Rota	                            Descrição
-POST	   /api/login	                    Login do usuário
-GET	       /api/entidades	                Lista de entidades
-POST	   /api/entidades	                Cria uma nova entidade
-GET	       /api/entidades/busca/{id}	    Detalhes de uma entidade
-PUT	       /api/entidades/{id}	            Atualiza entidade
-DELETE	   /api/entidades/{id}	            Exclui entidade
-GET	       /api/entidades/regionais	        Lista de regionais
-GET	       /api/entidades/especialidades	Lista de especialidades
+| Método | Rota                             | Descrição                  |
+|--------|----------------------------------|----------------------------|
+| POST   | /api/login                       | Login do usuário           |
+| GET    | /api/entidades                   | Lista de entidades         |
+| POST   | /api/entidades                   | Cria uma nova entidade     |
+| GET    | /api/entidades/busca/{id}        | Detalhes de uma entidade   |
+| PUT    | /api/entidades/{id}              | Atualiza entidade          |
+| DELETE | /api/entidades/{id}              | Exclui entidade            |
+| GET    | /api/entidades/regionais         | Lista de regionais         |
+| GET    | /api/entidades/especialidades    | Lista de especialidades    |
 
 ## 🧪 Dados de exemplo
 O sistema já vem com dados de teste criados via seeders. Eles incluem usuários, regionais, especialidades e algumas entidades.
