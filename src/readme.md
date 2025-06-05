@@ -1,51 +1,72 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# 📦 Sistema de Entidades – Backend (Laravel 5.4)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Este projeto é uma API desenvolvida em Laravel 5.4, configurada para rodar em ambiente Docker. Ele fornece endpoints autenticados via token, CRUD de entidades, e utiliza seeders para popular os dados iniciais.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## 🚀 Tecnologias Utilizadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [PHP 7.0 ]
+- [Laravel 5.4]
+- [MySQL]
+- [Docker & Docker Compose]
+- [Seeders ]
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+---
 
-## Learning Laravel
+## ⚙️ Pré-requisitos
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+Certifique-se de ter as seguintes ferramentas instaladas:
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+- [Docker instalado]
+- [Docker Compose instalado]
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+## 💻 Instalação
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+1. **Clone o repositório**
 
-## Contributing
+```bash
+git clone https://github.com/lucaasbritto/amorsaude_back.git
+cd backend/src
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+2. **Copie o arquivo .env e configure com os dados do seu banco**
+cp .env.example .env
 
-## Security Vulnerabilities
+3. **Suba os containers com Docker**
+docker-compose up -d
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+4. **Instale as dependências do PHP**
+docker exec -it exec app bash
+composer install
 
-## License
+5. **Gere a chave da aplicação**
+php artisan key:generate
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+6. **Rode as migrações e os seeders**
+php artisan migrate --seed
+
+## 🔐 Autenticação
+
+1. **Login**
+POST /api/login
+{
+  "email": "amorsaude@teste.com",
+  "password": "123456"
+}
+
+## 📬 Endpoints principais
+Método	   Rota	                            Descrição
+POST	   /api/login	                    Login do usuário
+GET	       /api/entidades	                Lista de entidades
+POST	   /api/entidades	                Cria uma nova entidade
+GET	       /api/entidades/busca/{id}	    Detalhes de uma entidade
+PUT	       /api/entidades/{id}	            Atualiza entidade
+DELETE	   /api/entidades/{id}	            Exclui entidade
+GET	       /api/entidades/regionais	        Lista de regionais
+GET	       /api/entidades/especialidades	Lista de especialidades
+
+## 🧪 Dados de exemplo
+O sistema já vem com dados de teste criados via seeders. Eles incluem usuários, regionais, especialidades e algumas entidades.
